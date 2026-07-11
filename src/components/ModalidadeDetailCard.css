@@ -1,0 +1,153 @@
+.modalidade-detail {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--gray-line);
+  scroll-margin-top: 92px; /* compensa o navbar fixo ao navegar via âncora (#slug) */
+  text-align: left;
+}
+
+/* Alterna o fundo de cada bloco para criar um efeito zebrado sutil. */
+.modalidade-detail:nth-child(even) {
+  background: var(--black-soft);
+}
+
+.modalidade-detail-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Inverte a ordem das colunas nos blocos ímpares (zig-zag). */
+.modalidade-detail.is-reversed .modalidade-detail-grid {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.modalidade-detail.is-reversed .modalidade-visual {
+  order: 2;
+}
+
+/* "Foto" da modalidade — como não há fotos reais para cada uma, usamos
+   um painel com o ícone da modalidade em destaque. Troque por uma
+   <img> quando houver fotos disponíveis. */
+.modalidade-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(155deg, var(--black-elevated), var(--black) 70%);
+  border: 1px solid var(--gray-dark);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%);
+}
+
+.modalidade-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-24deg, transparent 0 30px, rgba(62, 199, 52, 0.05) 30px 31px);
+}
+
+.modalidade-visual-icon {
+  width: 88px;
+  height: 88px;
+  color: var(--accent); /* cor principal do site */
+  stroke-width: 1.1;
+  position: relative;
+}
+
+.modalidade-visual-name {
+  position: relative;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.modalidade-content .eyebrow {
+  margin-bottom: 14px;
+}
+
+.modalidade-content h2 {
+  margin-bottom: 20px;
+}
+
+.modalidade-descricao {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 620px;
+}
+
+.modalidade-meta {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.meta-value {
+  display: block;
+  font-weight: 600;
+  color: var(--text-h);
+  font-size: 0.95rem;
+}
+
+.modalidade-beneficios {
+  list-style: none;
+  margin: 28px 0 36px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+
+.modalidade-beneficios li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.94rem;
+  color: var(--text-h);
+}
+
+.modalidade-beneficios svg {
+  flex-shrink: 0;
+  color: var(--accent); /* cor principal do site */
+}
+
+@media (max-width: 900px) {
+  .modalidade-detail-grid,
+  .modalidade-detail.is-reversed .modalidade-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .modalidade-detail.is-reversed .modalidade-visual {
+    order: 0;
+  }
+
+  .modalidade-visual {
+    aspect-ratio: 16 / 9;
+  }
+
+  .modalidade-beneficios {
+    grid-template-columns: 1fr;
+  }
+
+  .modalidade-meta {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

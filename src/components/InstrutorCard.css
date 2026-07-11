@@ -1,0 +1,112 @@
+.instrutor-row {
+  padding: 56px 0;
+  text-align: left;
+}
+
+.instrutor-row-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Inverte a ordem das colunas nas linhas ímpares (zig-zag). */
+.instrutor-row.is-reversed .instrutor-row-grid {
+  grid-template-columns: 1fr 0.7fr;
+}
+
+.instrutor-row.is-reversed .instrutor-photo {
+  order: 2;
+}
+
+/* Cantos arredondados + sombra suave + zoom no hover, como pedido no
+   briefing. Funciona tanto para o placeholder de iniciais quanto para
+   uma <img> real (troque instrutor.foto em src/data/instrutores.js). */
+.instrutor-photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--black-elevated), var(--black-soft));
+  border-radius: 18px;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.instrutor-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.instrutor-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gray-dark);
+  border-radius: 18px;
+}
+
+.instrutor-photo-frame:hover {
+  transform: scale(1.03);
+  box-shadow: 0 28px 60px -18px var(--accent-glow);
+}
+
+.instrutor-initials {
+  font-family: var(--display);
+  font-size: 4.5rem;
+  color: var(--accent); /* cor principal do site */
+  letter-spacing: 2px;
+}
+
+.instrutor-info .eyebrow {
+  margin-bottom: 12px;
+}
+
+.instrutor-info h2 {
+  margin-bottom: 10px;
+}
+
+.instrutor-cargo {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--accent); /* cor principal do site */
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.instrutor-info p {
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.instrutor-modalidade {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 8px 16px;
+  border: 1px solid var(--gray-dark);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+@media (max-width: 860px) {
+  .instrutor-row-grid,
+  .instrutor-row.is-reversed .instrutor-row-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .instrutor-row.is-reversed .instrutor-photo {
+    order: 0;
+  }
+
+  .instrutor-photo-frame {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

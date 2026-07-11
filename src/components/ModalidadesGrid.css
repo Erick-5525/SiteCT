@@ -1,0 +1,125 @@
+.modalidades-home {
+  padding: 100px 0;
+  background: var(--black-soft); /* fundo de seção alternada, mais claro que o body */
+  border-top: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+  text-align: left;
+}
+
+/* Cabeçalho padrão de seção (eyebrow + título). Repetido em outros
+   componentes de seção para manter cada um independente/copiável. */
+.section-heading {
+  margin-bottom: 48px;
+  max-width: 560px;
+}
+
+.section-heading h2 {
+  margin-top: 14px;
+}
+
+/* Grade de 5 colunas em telas largas (uma modalidade por coluna).
+   Ajuste o repeat() se a quantidade de modalidades mudar. */
+.modalidade-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  background: var(--gray-line); /* aparece como linha fina entre os cards */
+}
+
+.modalidade-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 40px 32px 44px;
+  background: var(--black-soft);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.3s var(--ease);
+}
+
+/* Barra na cor principal que "acende" embaixo do card no hover. */
+.modalidade-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--accent); /* cor principal do site */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+
+.modalidade-card:hover {
+  background: var(--black-elevated);
+}
+
+.modalidade-card:hover::before {
+  transform: scaleX(1);
+}
+
+.modalidade-card:hover .modalidade-icon {
+  color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.modalidade-icon {
+  color: var(--white-dim);
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.modalidade-card h3 {
+  color: var(--text-h);
+}
+
+.modalidade-card p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.modalidade-link {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent); /* cor principal do site */
+}
+
+@media (max-width: 1180px) {
+  .modalidade-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .modalidade-cards > a:last-child {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 980px) {
+  .modalidade-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modalidade-cards > a:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .modalidade-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reseta o "span 2" herdado do breakpoint de 980px: com apenas 1
+     coluna explícita aqui, um item pedindo span 2 forçava o grid a
+     criar uma coluna implícita extra e quebrava o layout de coluna
+     única (cards ficavam espremidos lado a lado). */
+  .modalidade-cards > a:last-child {
+    grid-column: span 1;
+  }
+}

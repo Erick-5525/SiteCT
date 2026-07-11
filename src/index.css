@@ -1,0 +1,213 @@
+/* ==========================================================================
+   ARQUIVO GLOBAL DE ESTILOS — CT Desafio de Gigantes
+   ==========================================================================
+   Aqui ficam as variáveis (cores, fontes, espaçamentos) usadas em TODO o
+   site e as classes utilitárias compartilhadas (.container, .btn, etc).
+   Para trocar a identidade visual do site (ex: reaproveitar este projeto
+   para outra academia/marca), o único lugar que precisa mudar é o bloco
+   ":root" abaixo — todo o resto do CSS consome essas variáveis.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  /* ---------- PALETA DE CORES ----------
+     Só mexer aqui já muda a cor em todo o site (botões, links, ícones,
+     bordas, etc), pois todo o CSS usa var(--nome-da-cor) em vez de
+     valores fixos. */
+  --black: #0a0a0a;         /* Cor de fundo principal do site (base escura) */
+  --black-soft: #141414;    /* Fundo de seções "elevadas" (cards, faixas alternadas) */
+  --black-elevated: #1c1c1c; /* Fundo de hover / elementos ainda mais destacados */
+  --white: #f2f0ec;         /* Cor do texto em destaque (títulos, texto sobre fundo escuro) */
+  --white-dim: #d8d5cf;     /* Cor do texto secundário/corpo sobre fundo escuro */
+  --gray: #8a8782;          /* Cor de texto apagado (labels, legendas, texto de apoio) */
+  --gray-dark: #2a2a2a;     /* Cor de bordas e divisórias sutis */
+  --gray-line: #232323;     /* Cor de linhas finas entre seções/cards */
+
+  /* Verde extraído da logo do CT (mesma tonalidade do círculo do
+     emblema), para o site inteiro conversar com a identidade visual
+     já existente em vez de usar uma cor genérica. */
+  --accent: #3ec734;           /* COR PRINCIPAL DO SITE — usada em CTAs, links ativos, ícones e destaques */
+  --accent-dark: #1f6b1c;      /* Verde mais escuro, usado em gradientes/sombras da cor principal */
+  --accent-glow: rgba(62, 199, 52, 0.35); /* Verde translúcido usado em sombras/glow ao redor de botões */
+
+  /* Aliases semânticos: o resto do CSS usa estes nomes (--text, --bg...)
+     em vez de --black/--white diretamente. Isso permite trocar só o
+     alias (ex: virar um tema claro) sem reescrever cada componente. */
+  --text: var(--white-dim);   /* Cor padrão de parágrafos */
+  --text-h: var(--white);     /* Cor padrão de títulos (h1, h2, h3...) */
+  --bg: var(--black);         /* Cor de fundo padrão do <body> */
+  --border: var(--gray-dark); /* Cor padrão de bordas */
+
+  /* ---------- TIPOGRAFIA ----------
+     Duas famílias apenas: uma de destaque (títulos) e uma de leitura
+     (corpo de texto, botões, formulários). */
+  --display: 'Anton', 'Arial Narrow', sans-serif; /* Fonte condensada/impactante usada só em títulos */
+  --sans: 'Work Sans', system-ui, 'Segoe UI', Roboto, sans-serif; /* Fonte de leitura usada em todo o resto */
+
+  /* ---------- LAYOUT ---------- */
+  --container: 1240px; /* Largura máxima do conteúdo (ver classe .container) */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1); /* Curva de easing padrão das transições/animações do site */
+
+  font: 17px/1.6 var(--sans);
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Títulos sempre usam a fonte de destaque (--display), maiúsculas e
+   bem compactos — é a "personalidade" tipográfica do site. */
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--text-h);
+  line-height: 0.98;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.6rem, 5.5vw, 5rem); }
+h2 { font-size: clamp(2rem, 3.6vw, 3.1rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.7rem); }
+
+p {
+  margin: 0;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+
+button, input, textarea, select {
+  font-family: var(--sans);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Centraliza e limita a largura do conteúdo em todas as seções. */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Rótulo pequeno acima dos títulos de seção (ex: "— SOBRE O CT"). */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent); /* usa a cor principal do site */
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ---------- BOTÕES ----------
+   Duas variações: sólido (padrão, fundo na cor principal) e "ghost"
+   (contorno). Ambos usam o mesmo corte diagonal nas pontas (clip-path),
+   que é a assinatura visual do site (referência a um golpe/corte). */
+.btn {
+  --btn-fg: var(--black); /* cor do texto do botão sólido */
+  --btn-bg: var(--accent); /* cor de fundo do botão sólido */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 34px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px var(--accent-glow);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* Variante contornada (sem preenchimento). Atenção: como o botão tem
+   corte diagonal (clip-path), uma borda visível nos 4 lados não fica
+   bem — por isso ela é usada normalmente sobre fundos escuros/sólidos.
+   Se for usar sobre um fundo colorido cheio (como a faixa da cor
+   principal), prefira sobrescrever --btn-bg para um preenchimento
+   sólido em vez de depender só da borda (veja CtaBand.css). */
+.btn-ghost {
+  --btn-fg: var(--text-h);
+  --btn-bg: transparent;
+  border: 1px solid var(--gray-dark);
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  box-shadow: none;
+  background: rgba(62, 199, 52, 0.08);
+}
+
+/* Traço diagonal na cor principal, usado como pequeno elemento decorativo. */
+.slash-divider {
+  height: 3px;
+  width: 64px;
+  background: var(--accent);
+  transform: skewX(-20deg);
+  margin: 20px 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--black);
+}
+
+@media (max-width: 720px) {
+  .container { padding: 0 18px; }
+}

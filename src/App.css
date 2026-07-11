@@ -1,0 +1,34 @@
+/* Layout raiz do app: espaço reservado para o Navbar fixo (position:
+   fixed no Navbar.css) e a animação de troca de página. */
+
+main {
+  width: 100%;
+  flex: 1;
+  padding-top: 76px; /* altura do navbar fixo, ver Navbar.css .navbar-inner */
+}
+
+/* Fade + slide sutil toda vez que a rota muda. */
+.page-transition {
+  animation: page-fade-in 0.4s var(--ease) both;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}
+
+@media (max-width: 720px) {
+  main { padding-top: 68px; }
+}

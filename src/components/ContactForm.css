@@ -1,0 +1,100 @@
+.contact-form-wrap {
+  text-align: left;
+}
+
+.contact-form-wrap h2 {
+  margin-bottom: 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--black-soft); /* fundo do card do formulário */
+  border: 1px solid var(--gray-line);
+  padding: 36px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.field-row {
+  display: flex;
+  gap: 20px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: var(--black);
+  border: 1px solid var(--gray-dark);
+  color: var(--text-h);
+  padding: 13px 14px;
+  font-size: 0.96rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--gray);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--accent); /* cor principal do site, usada como indicador de foco */
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.form-feedback {
+  font-size: 0.9rem;
+  padding: 12px 14px;
+  border-left: 3px solid;
+}
+
+/* Sucesso reforça a própria cor principal do site (verde já transmite
+   positivo/aprovado universalmente). Erro usa um vermelho FIXO
+   (não uma variável) de propósito: é o único lugar do site com essa
+   cor, mantendo o alerta universal de "atenção" mesmo com a marca
+   agora sendo verde — trocar --accent não deve mudar o significado
+   de erro do formulário. */
+.form-feedback.success {
+  border-color: var(--accent);
+  background: rgba(62, 199, 52, 0.08);
+  color: #8fe085;
+}
+
+.form-feedback.error {
+  border-color: #e0102d;
+  background: rgba(224, 16, 41, 0.08);
+  color: #ff8a97;
+}
+
+@media (max-width: 900px) {
+  .field-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-form {
+    padding: 26px 22px;
+  }
+}

@@ -1,0 +1,54 @@
+.cta-band {
+  position: relative;
+  padding: 110px 0;
+  background: var(--accent); /* cor principal do site, aqui usada como fundo cheio */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Textura de linhas diagonais bem sutis sobre a cor principal. */
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -20deg,
+    rgba(0, 0, 0, 0.08) 0px,
+    rgba(0, 0, 0, 0.08) 2px,
+    transparent 2px,
+    transparent 34px
+  );
+}
+
+.cta-band-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.cta-band h2 {
+  color: var(--black);
+}
+
+.cta-band p {
+  margin-top: 14px;
+  color: rgba(10, 10, 10, 0.75);
+  font-size: 1.05rem;
+  max-width: 480px;
+}
+
+/* Botão preto sólido: sobre um fundo cheio na cor principal, o botão
+   precisa de preenchimento (não de contorno) para não sumir — ver
+   comentário sobre .btn-ghost em index.css. */
+.cta-band-btn {
+  --btn-fg: var(--white);
+  --btn-bg: var(--black);
+}
+
+.cta-band-btn:hover {
+  --btn-fg: var(--black);
+  --btn-bg: var(--white);
+}

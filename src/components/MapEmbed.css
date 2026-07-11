@@ -1,0 +1,51 @@
+.map-embed {
+  position: relative;
+  height: 400px;
+  border: 1px solid var(--gray-dark);
+  overflow: hidden; /* garante que o iframe respeite o mesmo corte reto do resto do site */
+}
+
+/* O Google Maps embutido vem colorido (fora da paleta preto/branco/verde
+   do site). Aplicamos um filtro para deixá-lo em tom de cinza escuro,
+   mas já "acordado" (mais saturado/contrastado) por padrão — como se o
+   mouse estivesse sempre em cima dele — em vez de só reagir ao hover.
+   O mapa continua totalmente interativo (arrastar/zoom); o marcador
+   exibido é o próprio pin do Google (dentro do iframe), que não dá
+   para recolorir via CSS por ser de outro domínio. */
+.map-embed-frame {
+  filter: grayscale(0.3) invert(0.9) contrast(0.95);
+}
+
+.map-open-link {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 10px 18px;
+  background: var(--accent); /* cor principal do site */
+  color: var(--black);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: transform 0.2s var(--ease);
+}
+
+.map-open-link:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .map-embed {
+    height: 300px;
+  }
+
+  .map-open-link {
+    right: 10px;
+    bottom: 10px;
+    padding: 9px 14px;
+    font-size: 0.76rem;
+  }
+}
