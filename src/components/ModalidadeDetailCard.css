@@ -46,7 +46,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(-24deg, transparent 0 30px, rgba(62, 199, 52, 0.05) 30px 31px);
+  background: repeating-linear-gradient(-24deg, transparent 0 30px, rgba(79, 122, 74, 0.08) 30px 31px);
 }
 
 .modalidade-visual-icon {
@@ -64,6 +64,14 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--white-dim);
+}
+
+/* Mesma lógica do formulário de contato: esta coluna fica espremida
+   dentro da grade 0.85fr/1.15fr bem antes da tela toda ficar estreita
+   — .modalidade-meta e .modalidade-beneficios reagem à largura real
+   desta coluna (@container), não à da janela (@media). */
+.modalidade-content {
+  container-type: inline-size;
 }
 
 .modalidade-content .eyebrow {
@@ -141,7 +149,9 @@
   .modalidade-visual {
     aspect-ratio: 16 / 9;
   }
+}
 
+@container (max-width: 460px) {
   .modalidade-beneficios {
     grid-template-columns: 1fr;
   }

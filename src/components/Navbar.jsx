@@ -5,6 +5,7 @@ import './Navbar.css'
 const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/modalidades', label: 'Modalidades' },
+  { to: '/modalidades-infantis', label: 'Kids' },
   { to: '/instrutores', label: 'Instrutores' },
   { to: '/atendimentos', label: 'Atendimento' },
 ]

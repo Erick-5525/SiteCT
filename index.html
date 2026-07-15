@@ -2,9 +2,75 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desafio de Gigantes</title>
+
+    <title>Desafio de Gigantes — Centro de Treinamento de Artes Marciais em Contagem/MG</title>
+    <meta
+      name="description"
+      content="Muay Thai, Boxe, MMA, Jiu-Jitsu, Judô e Treino Funcional em Contagem/MG. Aulas para todas as idades, do iniciante ao competidor. Agende sua aula experimental gratuita."
+    />
+
+    <!-- Open Graph / compartilhamento em redes sociais e WhatsApp.
+         TODO: trocar "https://www.desafiodegigantes.com.br" pelo domínio
+         real assim que o site for publicado, e og:image por uma arte de
+         1200x630 (hoje aponta pra logo, que é quadrada). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="CT Desafio de Gigantes" />
+    <meta property="og:title" content="Desafio de Gigantes — Centro de Treinamento de Artes Marciais" />
+    <meta
+      property="og:description"
+      content="Muay Thai, Boxe, MMA, Jiu-Jitsu, Judô e Treino Funcional em Contagem/MG. Aulas para todas as idades — agende sua aula experimental gratuita."
+    />
+    <meta property="og:image" content="https://www.desafiodegigantes.com.br/images/logo.png" />
+    <meta property="og:url" content="https://www.desafiodegigantes.com.br" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Desafio de Gigantes — Centro de Treinamento de Artes Marciais" />
+    <meta
+      name="twitter:description"
+      content="Muay Thai, Boxe, MMA, Jiu-Jitsu, Judô e Treino Funcional em Contagem/MG. Agende sua aula experimental gratuita."
+    />
+    <meta name="twitter:image" content="https://www.desafiodegigantes.com.br/images/logo.png" />
+
+    <!-- Fontes: preconnect antecipa a conexão com o Google Fonts, e o
+         <link> (em vez de @import no CSS) evita bloquear a primeira
+         renderização da página esperando o CSS externo chegar. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap"
+    />
+
+    <!-- Dados estruturados: ajuda o Google a entender que isso é uma
+         academia (endereço, telefone, redes) e pode gerar rich results
+         na busca/Maps. Mantenha em sincronia com src/data/contato.js se
+         esses dados mudarem — este bloco é HTML estático, não lê o JS. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "CT Desafio de Gigantes",
+        "image": "https://www.desafiodegigantes.com.br/images/logo.png",
+        "telephone": "+5531998831159",
+        "email": "ctdesafiodegigantes@gmail.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Avenida João Cesar de Oliveira, 2605",
+          "addressLocality": "Contagem",
+          "addressRegion": "MG",
+          "postalCode": "32315-000",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://instagram.com/ctdesafiodegigantes",
+          "https://facebook.com/ctdesafiodegigantes"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

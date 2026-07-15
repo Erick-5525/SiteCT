@@ -51,7 +51,6 @@
 
 .instrutor-photo-frame:hover {
   transform: scale(1.03);
-  box-shadow: 0 28px 60px -18px var(--accent-glow);
 }
 
 .instrutor-initials {

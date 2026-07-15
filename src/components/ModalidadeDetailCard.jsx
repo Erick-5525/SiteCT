@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import Reveal from './Reveal.jsx'
+import HorarioList from './HorarioList.jsx'
 import { CheckIcon } from './Icons.jsx'
 import './ModalidadeDetailCard.css'
 
@@ -8,7 +9,7 @@ import './ModalidadeDetailCard.css'
 // posição dela na lista, para alternar o lado da imagem (zig-zag) e
 // numerar o rótulo (01, 02, 03...).
 function ModalidadeDetailCard({ modalidade, index }) {
-  const { slug, name, icon: Icon, descricao, nivel, publico, beneficios } = modalidade
+  const { slug, name, icon: Icon, descricao, nivel, publico, beneficios, horarios } = modalidade
   const isReversed = index % 2 === 1
 
   return (
@@ -44,7 +45,13 @@ function ModalidadeDetailCard({ modalidade, index }) {
             ))}
           </ul>
 
-          <NavLink to="/atendimentos" className="btn">
+          <HorarioList horarios={horarios} />
+
+          {/* state: leva o nome da modalidade pra página de Atendimento,
+              que passa adiante pro formulário — assim quem clica aqui
+              não precisa escolher de novo no <select> qual modalidade
+              quer (ver Atendimentos.jsx e ContactForm.jsx). */}
+          <NavLink to="/atendimentos" state={{ modalidade: name }} className="btn">
             Agende sua Aula Experimental
           </NavLink>
         </Reveal>

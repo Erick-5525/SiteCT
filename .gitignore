@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Variáveis de ambiente — o projeto não usa nenhuma hoje, mas se um dia
+# precisar de uma chave de API (ex: back-end do formulário de contato),
+# isso evita que ela vá parar commitada no repositório por engano.
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -25,3 +32,4 @@ dist-ssr
 
 # Claude Code (configurações/dados locais do assistente, não fazem parte do projeto)
 .claude
+.agents

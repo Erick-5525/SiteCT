@@ -8,28 +8,40 @@
    ":root" abaixo — todo o resto do CSS consome essas variáveis.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+/* As fontes (Big Shoulders Display, Inter, Space Mono) são carregadas
+   via <link> no index.html, não por @import aqui — @import em CSS
+   bloqueia a primeira renderização da página até o arquivo externo
+   chegar; <link rel="stylesheet"> + preconnect não bloqueia. */
 
 :root {
   /* ---------- PALETA DE CORES ----------
      Só mexer aqui já muda a cor em todo o site (botões, links, ícones,
      bordas, etc), pois todo o CSS usa var(--nome-da-cor) em vez de
-     valores fixos. */
-  --black: #0a0a0a;         /* Cor de fundo principal do site (base escura) */
-  --black-soft: #141414;    /* Fundo de seções "elevadas" (cards, faixas alternadas) */
-  --black-elevated: #1c1c1c; /* Fundo de hover / elementos ainda mais destacados */
-  --white: #f2f0ec;         /* Cor do texto em destaque (títulos, texto sobre fundo escuro) */
-  --white-dim: #d8d5cf;     /* Cor do texto secundário/corpo sobre fundo escuro */
-  --gray: #8a8782;          /* Cor de texto apagado (labels, legendas, texto de apoio) */
-  --gray-dark: #2a2a2a;     /* Cor de bordas e divisórias sutis */
-  --gray-line: #232323;     /* Cor de linhas finas entre seções/cards */
+     valores fixos.
 
-  /* Verde extraído da logo do CT (mesma tonalidade do círculo do
-     emblema), para o site inteiro conversar com a identidade visual
-     já existente em vez de usar uma cor genérica. */
-  --accent: #3ec734;           /* COR PRINCIPAL DO SITE — usada em CTAs, links ativos, ícones e destaques */
-  --accent-dark: #1f6b1c;      /* Verde mais escuro, usado em gradientes/sombras da cor principal */
-  --accent-glow: rgba(62, 199, 52, 0.35); /* Verde translúcido usado em sombras/glow ao redor de botões */
+     Direção: preto neutro e mais escuro (perto do absoluto, mas sem
+     cravar #000 — puro demais causa halo/cansaço visual do texto claro
+     por cima, é por isso que Material Design/GitHub etc. também evitam
+     #000 puro no modo escuro), verde mais profundo do que um neon
+     chapado, e um lima claro usado em doses mínimas (glow, bordas de
+     foco). */
+  --black: #0b0c0d;          /* Cor de fundo principal do site (base escura, neutra) */
+  --black-soft: #131415;     /* Fundo de seções "elevadas" (cards, faixas alternadas) */
+  --black-elevated: #1c1d1e; /* Fundo de hover / elementos ainda mais destacados */
+  --white: #f4f4f2;          /* Cor do texto em destaque (títulos, texto sobre fundo escuro) */
+  --white-dim: #cbccc8;      /* Cor do texto secundário/corpo sobre fundo escuro */
+  --gray: #9c9e99;           /* Cor de texto apagado (labels, legendas, texto de apoio) — clareado pra manter contraste AA folgado sobre --black-elevated */
+  --gray-dark: #333537;      /* Cor de bordas e divisórias sutis */
+  --gray-line: #242628;      /* Cor de linhas finas entre seções/cards */
+
+  /* Verde derivado da logo do CT — mais saturado e vivo que a primeira
+     versão (que ficou pálida demais), mas ainda sem virar o neon chapado
+     do site de referência. O lima claro fica reservado só para o glow
+     de foco/hover, nunca para texto correndo pela página. */
+  --accent: #4fa83f;                        /* COR PRINCIPAL DO SITE — usada em CTAs, links ativos, ícones e destaques */
+  --accent-dark: #2c6b22;                   /* Verde mais escuro, usado em gradientes/sombras da cor principal */
+  --accent-bright: #c3ec8f;                 /* Lima claro — só para glow e foco, nunca preenchimento ou texto corrido */
+  --accent-glow: rgba(79, 168, 63, 0.4);    /* Verde translúcido usado em sombras/glow ao redor de botões */
 
   /* Aliases semânticos: o resto do CSS usa estes nomes (--text, --bg...)
      em vez de --black/--white diretamente. Isso permite trocar só o
@@ -40,10 +52,13 @@
   --border: var(--gray-dark); /* Cor padrão de bordas */
 
   /* ---------- TIPOGRAFIA ----------
-     Duas famílias apenas: uma de destaque (títulos) e uma de leitura
-     (corpo de texto, botões, formulários). */
-  --display: 'Anton', 'Arial Narrow', sans-serif; /* Fonte condensada/impactante usada só em títulos */
-  --sans: 'Work Sans', system-ui, 'Segoe UI', Roboto, sans-serif; /* Fonte de leitura usada em todo o resto */
+     Três famílias: uma geométrica de impacto para títulos (mais rara em
+     sites de academia do que a clássica condensada), uma de leitura, e
+     uma monoespaçada para dados (horários, números, rótulos) — reforça
+     a ideia de "grade de treino"/ficha técnica. */
+  --display: 'Big Shoulders Display', 'Arial Narrow', sans-serif; /* Fonte condensada industrial usada só em títulos — mais angulosa/combativa que a geométrica arredondada usada antes */
+  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif; /* Fonte de leitura usada em todo o resto */
+  --mono: 'Space Mono', ui-monospace, 'Courier New', monospace; /* Fonte de dados: horários, rótulos, números */
 
   /* ---------- LAYOUT ---------- */
   --container: 1240px; /* Largura máxima do conteúdo (ver classe .container) */
@@ -77,18 +92,21 @@ body {
 }
 
 /* Títulos sempre usam a fonte de destaque (--display), maiúsculas e
-   bem compactos — é a "personalidade" tipográfica do site. */
+   bem compactos — é a "personalidade" tipográfica do site. Line-height
+   e letter-spacing um pouco mais abertos que a versão anterior: caixa-
+   alta em blocos de 2-3 linhas (ex: o H1 do Hero) fica mais difícil de
+   ler quando as linhas quase se tocam. */
 h1, h2, h3, h4 {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--text-h);
-  line-height: 0.98;
-  letter-spacing: 0.3px;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
   margin: 0;
 }
 
-h1 { font-size: clamp(2.6rem, 5.5vw, 5rem); }
+h1 { font-size: clamp(2.6rem, 5.5vw, 5rem); line-height: 1.08; }
 h2 { font-size: clamp(2rem, 3.6vw, 3.1rem); }
 h3 { font-size: clamp(1.3rem, 2vw, 1.7rem); }
 
@@ -105,6 +123,38 @@ button, input, textarea, select {
   font-family: var(--sans);
 }
 
+/* Foco de teclado visível em QUALQUER elemento interativo do site, não
+   só nos botões (.btn tem sua própria variante em branco, mais abaixo,
+   que continua valendo porque uma classe é mais específica que a tag). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Link "pular para o conteúdo": fica invisível até receber foco via
+   Tab, para quem navega só de teclado não precisar passar pelos 5
+   links do menu toda vez que troca de página. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -118,17 +168,18 @@ img {
   padding: 0 24px;
 }
 
-/* Rótulo pequeno acima dos títulos de seção (ex: "— SOBRE O CT"). */
+/* Rótulo pequeno acima dos títulos de seção (ex: "— SOBRE O CT"). Usa a
+   fonte mono para reforçar a leitura de "rótulo de ficha técnica". */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--sans);
+  font-family: var(--mono);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--accent); /* usa a cor principal do site */
+  color: var(--accent); /* cor principal do site — este rótulo aparece em toda seção, então precisa ter presença */
 }
 
 .eyebrow::before {
@@ -141,7 +192,8 @@ img {
 /* ---------- BOTÕES ----------
    Duas variações: sólido (padrão, fundo na cor principal) e "ghost"
    (contorno). Ambos usam o mesmo corte diagonal nas pontas (clip-path),
-   que é a assinatura visual do site (referência a um golpe/corte). */
+   que é a assinatura visual do site (referência a um golpe/corte), com
+   um brilho diagonal que atravessa o botão no hover. */
 .btn {
   --btn-fg: var(--black); /* cor do texto do botão sólido */
   --btn-bg: var(--accent); /* cor de fundo do botão sólido */
@@ -161,13 +213,26 @@ img {
   background: var(--btn-bg);
   border: none;
   cursor: pointer;
-  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  overflow: hidden;
+  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.35) 45%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.55s var(--ease);
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -8px var(--accent-glow);
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
 }
 
 .btn:focus-visible {
@@ -185,13 +250,13 @@ img {
   --btn-fg: var(--text-h);
   --btn-bg: transparent;
   border: 1px solid var(--gray-dark);
-  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
 }
 
 .btn-ghost:hover {
   border-color: var(--accent);
   box-shadow: none;
-  background: rgba(62, 199, 52, 0.08);
+  background: rgba(79, 122, 74, 0.1);
 }
 
 /* Traço diagonal na cor principal, usado como pequeno elemento decorativo. */
@@ -210,4 +275,10 @@ img {
 
 @media (max-width: 720px) {
   .container { padding: 0 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::after {
+    display: none;
+  }
 }

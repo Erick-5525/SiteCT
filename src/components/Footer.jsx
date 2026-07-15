@@ -9,6 +9,7 @@ import './Footer.css'
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/modalidades', label: 'Modalidades' },
+  { to: '/modalidades-infantis', label: 'Modalidades Infantis' },
   { to: '/instrutores', label: 'Instrutores' },
   { to: '/atendimentos', label: 'Atendimento' },
 ]

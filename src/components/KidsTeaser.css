@@ -1,0 +1,57 @@
+.kids-teaser {
+  padding: 64px 0;
+  background: var(--black-soft);
+  border-top: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.kids-teaser-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  text-align: left;
+}
+
+.kids-teaser-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  background: var(--black-elevated);
+  border: 1px solid var(--gray-dark);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+
+.kids-teaser-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--accent);
+}
+
+.kids-teaser-text h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  margin: 10px 0 8px;
+}
+
+.kids-teaser-text p {
+  font-size: 0.94rem;
+  max-width: 460px;
+}
+
+@media (max-width: 720px) {
+  .kids-teaser-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .kids-teaser-icon-wrap {
+    margin: 0 auto;
+  }
+
+  .kids-teaser-text p {
+    margin-inline: auto;
+  }
+}

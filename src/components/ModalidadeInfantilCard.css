@@ -1,0 +1,49 @@
+/* Cantos arredondados (sem o corte diagonal "de golpe" usado nos cards
+   adultos): esta página é vista por pais decidindo matricular uma
+   criança pequena, e um tom visual levemente mais acolhedor ajuda —
+   sem abandonar a marca, só suavizando essa seção específica. */
+.kids-card {
+  background: var(--black-soft);
+  border: 1px solid var(--gray-line);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.kids-card-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kids-card-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--accent);
+  stroke-width: 1.3;
+}
+
+.kids-card-head h3 {
+  font-size: 1.25rem;
+}
+
+.kids-card-faixa {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.kids-card-resumo {
+  margin-top: 18px;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.kids-card .horario-list {
+  margin-bottom: 0;
+}

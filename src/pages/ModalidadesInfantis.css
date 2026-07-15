@@ -1,0 +1,15 @@
+/* Layout específico da página /modalidades-infantis. */
+
+.kids-grid-section {
+  padding: 88px 0 100px;
+}
+
+.kids-grid {
+  display: grid;
+  /* min(320px, 100%) em vez de 320px puro: numa tela mais estreita que
+     320px (celulares de entrada ainda comuns, ~280-320px de viewport),
+     320px fixo forçava o card a estourar a largura da tela. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 28px;
+  text-align: left;
+}

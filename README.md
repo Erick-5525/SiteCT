@@ -1,8 +1,8 @@
 # CT Desafio de Gigantes 🥊
 
-Site institucional para o **CT Desafio de Gigantes**, centro de treinamento de artes marciais (Muay Thai, Boxe, MMA, Judô e Treino Funcional) em Contagem/MG.
+Site institucional para o **CT Desafio de Gigantes**, centro de treinamento de artes marciais (Muay Thai, Boxe, MMA, Jiu-Jitsu, Judô e Treino Funcional) em Contagem/MG.
 
-> ⚠️ **Projeto em desenvolvimento.** Conteúdo, textos e alguns dados (fotos dos instrutores, horários de funcionamento) ainda são provisórios e serão substituídos antes do lançamento.
+> ⚠️ **Projeto em desenvolvimento.** Fotos reais dos instrutores e a confirmação dos horários de Judô e Jiu-Jitsu (Gracie Barra) ainda são pendentes — o resto do conteúdo (endereço, telefone, horários de Muay Thai/Boxe/MMA/Treino Funcional/turmas Kids) já é real. Domínio ainda não publicado — `index.html` e `public/sitemap.xml` usam um domínio placeholder que precisa ser trocado no lançamento.
 
 ## Sobre
 
@@ -12,8 +12,9 @@ Os direitos autorais do **site** (o código e o design, não a marca do CT) pert
 
 ## Páginas
 
-- **Home** — hero de impacto, apresentação do CT, modalidades em destaque, diferenciais e chamada para ação.
-- **Modalidades** — descrição completa, benefícios, público indicado e nível de cada modalidade oferecida.
+- **Home** — hero de impacto, apresentação do CT, modalidades em destaque, chamada para a página Kids, diferenciais e chamada para ação.
+- **Modalidades** — descrição completa, benefícios, público indicado, nível e horários de cada modalidade oferecida.
+- **Modalidades Infantis** — turmas por faixa etária (Muay Thai Kids, Jiu-Jitsu Kids, Jiu-Jitsu e Judô Kids).
 - **Instrutores** — apresentação da equipe em layout alternado (zig-zag).
 - **Atendimento** — informações de contato, formulário de mensagem e mapa do Google.
 
@@ -64,9 +65,13 @@ Textos, dados de contato, modalidades e instrutores ficam em `src/data/`, separa
 
 ## Pendências conhecidas
 
-- [ ] Fotos reais dos instrutores (hoje exibem um placeholder com as iniciais do nome)
-- [ ] Confirmar horários de funcionamento reais com o CT
-- [ ] Definir para onde o formulário de contato deve enviar as mensagens (hoje é só front-end, sem back-end)
+- [ ] Fotos reais dos instrutores (hoje exibem um placeholder com as iniciais do nome) e biografia/graduação de cada um — nomes e modalidades já são reais, mas o texto de bio em `src/data/instrutores.js` é uma **ficha fictícia genérica** (só pra página não ficar vazia) e precisa ser trocado pelo texto real antes do lançamento
+- [ ] Confirmar horário de funcionamento geral do espaço (abertura/fechamento) — os horários por modalidade já são reais
+- [ ] Confirmar grade de horários de Judô (adulto) e Jiu-Jitsu/Gracie Barra — a foto enviada estava com resolução baixa demais para transcrever com confiança
+- [x] ~~Definir para onde o formulário de contato deve enviar as mensagens~~ — resolvido: o formulário abre o WhatsApp do CT com os dados preenchidos (sem back-end)
+- [ ] Trocar o domínio placeholder (`www.desafiodegigantes.com.br`) pelo domínio real em `index.html` (meta tags, JSON-LD) e `public/sitemap.xml` assim que o site for publicado
+- [ ] Gerar uma imagem de compartilhamento (`og:image`) de 1200×630 — hoje aponta para a logo, que é quadrada
+- [ ] Foto do Hero (`public/images/ringue.jpg`) está em baixa resolução (680×481) para o tamanho que ocupa na tela — ideal ter algo a partir de 1920×1080
 
 ## Créditos
 

@@ -17,13 +17,15 @@
   margin-top: 14px;
 }
 
-/* Grade de 5 colunas em telas largas (uma modalidade por coluna).
-   Ajuste o repeat() se a quantidade de modalidades mudar. */
+/* Grade de 3 colunas — com as 6 modalidades atuais fecha em 2 linhas
+   exatas, sem sobrar espaço vazio. Se a quantidade de modalidades mudar
+   para algo que não seja múltiplo de 3 (ou de 2, no breakpoint abaixo),
+   ajuste o repeat() aqui. */
 .modalidade-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  background: var(--gray-line); /* aparece como linha fina entre os cards */
+  background: var(--black-soft); /* mesma cor da seção — sem linha clara nas bordas dos cards */
 }
 
 .modalidade-card {
@@ -31,12 +33,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
-  padding: 40px 32px 44px;
+  gap: 16px;
+  padding: 44px 36px 40px;
   background: var(--black-soft);
   text-decoration: none;
   overflow: hidden;
-  transition: background 0.3s var(--ease);
+  transform: scale(1);
+  opacity: 1;
+  filter: saturate(1);
+  transition: background 0.3s var(--ease), transform 0.35s var(--ease),
+    opacity 0.35s var(--ease), filter 0.35s var(--ease);
 }
 
 /* Barra na cor principal que "acende" embaixo do card no hover. */
@@ -53,25 +59,71 @@
   transition: transform 0.35s var(--ease);
 }
 
-.modalidade-card:hover {
-  background: var(--black-elevated);
+/* Efeito "holofote": ao passar o mouse pela grade, a modalidade sob o
+   cursor ganha destaque (cresce, fica no ponto) enquanto as vizinhas
+   recuam um pouco — sem depender de imagem de fundo, com os mesmos
+   cards de ícone que o site já usa. */
+.modalidade-cards:hover .modalidade-card {
+  opacity: 0.55;
+  filter: saturate(0.4);
+  transform: scale(0.97);
+}
+
+.modalidade-cards .modalidade-card:hover {
+  opacity: 1;
+  filter: saturate(1);
+  transform: scale(1.04);
+  /* mesma cor de fundo da seção/card em repouso — o destaque vem da
+     borda do ícone, da barra embaixo e do zoom, não de clarear o fundo */
+  background: var(--black-soft);
+  z-index: 1;
 }
 
 .modalidade-card:hover::before {
   transform: scaleX(1);
 }
 
-.modalidade-card:hover .modalidade-icon {
-  color: var(--accent);
-  transform: translateY(-4px);
+/* "Selo" atrás do ícone: dá presença e uma moldura consistente mesmo
+   quando o desenho do ícone em si é simples — evita o efeito de
+   "rabisco solto" que um ícone pequeno sem fundo tem numa grade densa. */
+.modalidade-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: var(--black-elevated);
+  border: 1px solid var(--gray-dark);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  transition: border-color 0.3s var(--ease);
+}
+
+.modalidade-card:hover .modalidade-icon-wrap {
+  border-color: var(--accent);
 }
 
 .modalidade-icon {
+  width: 30px;
+  height: 30px;
   color: var(--white-dim);
   transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
+.modalidade-card:hover .modalidade-icon {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modalidade-cards:hover .modalidade-card,
+  .modalidade-cards .modalidade-card:hover {
+    transform: none;
+  }
+}
+
 .modalidade-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.05;
   color: var(--text-h);
 }
 
@@ -90,36 +142,14 @@
   color: var(--accent); /* cor principal do site */
 }
 
-@media (max-width: 1180px) {
-  .modalidade-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .modalidade-cards > a:last-child {
-    grid-column: span 3;
-  }
-}
-
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .modalidade-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .modalidade-cards > a:last-child {
-    grid-column: span 2;
-  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .modalidade-cards {
     grid-template-columns: 1fr;
-  }
-
-  /* Reseta o "span 2" herdado do breakpoint de 980px: com apenas 1
-     coluna explícita aqui, um item pedindo span 2 forçava o grid a
-     criar uma coluna implícita extra e quebrava o layout de coluna
-     única (cards ficavam espremidos lado a lado). */
-  .modalidade-cards > a:last-child {
-    grid-column: span 1;
   }
 }

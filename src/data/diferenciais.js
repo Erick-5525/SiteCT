@@ -15,6 +15,6 @@ export const diferenciais = [
 export const stats = [
   { value: '12+', label: 'Anos de tatame' },
   { value: '600+', label: 'Alunos ativos' },
-  { value: '05', label: 'Modalidades' },
-  { value: '06', label: 'Instrutores' },
+  { value: '06', label: 'Modalidades' },
+  { value: '07', label: 'Instrutores' },
 ]

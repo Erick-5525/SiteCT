@@ -1,4 +1,13 @@
+/* container-type: o formulário fica dentro da coluna estreita de uma
+   grade de 2 colunas (ver Atendimentos.css) — a largura real disponível
+   pra ele é bem menor que a da tela. Usar @container (mais abaixo) em
+   vez de @media faz ".field-row" reagir ao espaço que ELE realmente
+   tem, não ao tamanho da janela. Sem isso, tinha uma faixa de telas
+   (por volta de 900-1150px) em que a grade ainda não tinha empilhado
+   pra 1 coluna, mas os campos lado a lado já não cabiam mais — bug
+   relatado especificamente em 971px de largura. */
 .contact-form-wrap {
+  container-type: inline-size;
   text-align: left;
 }
 
@@ -43,9 +52,11 @@
   color: var(--text-h);
   padding: 13px 14px;
   font-size: 0.96rem;
-  outline: none;
   transition: border-color 0.2s;
   resize: vertical;
+  /* Sem "outline: none" aqui de propósito — o outline de :focus-visible
+     definido globalmente em index.css precisa continuar aparecendo
+     para quem navega de teclado. */
 }
 
 .field input::placeholder,
@@ -59,12 +70,42 @@
   border-color: var(--accent); /* cor principal do site, usada como indicador de foco */
 }
 
+/* Campo "Horário desejado" fica desabilitado até escolher o dia (ver
+   ContactForm.jsx) — deixa isso visualmente óbvio, não só por estar
+   cinza por padrão do navegador. */
+.field select:disabled {
+  color: var(--gray);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.field input[aria-invalid='true'],
+.field select[aria-invalid='true'] {
+  border-color: #e0102d;
+}
+
 .contact-form .btn {
   align-self: flex-start;
   margin-top: 6px;
 }
 
+/* Aviso no lugar dos campos de Dia/Horário quando a modalidade ainda
+   não tem grade confirmada (ver horarioConfirmadoDaModalidade). */
+.form-note {
+  font-size: 0.88rem;
+  color: var(--gray);
+  background: var(--black);
+  border: 1px solid var(--gray-dark);
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+}
+
+.form-feedback-live {
+  margin: 0;
+}
+
 .form-feedback {
+  display: inline-block;
   font-size: 0.9rem;
   padding: 12px 14px;
   border-left: 3px solid;
@@ -88,7 +129,11 @@
   color: #ff8a97;
 }
 
-@media (max-width: 900px) {
+/* @container, não @media: reage à largura real do formulário (definida
+   em .contact-form-wrap acima), não à largura da janela — resolve o
+   caso em que o formulário está espremido dentro de uma coluna estreita
+   mesmo com a tela inteira ainda "larga". */
+@container (max-width: 520px) {
   .field-row {
     flex-direction: column;
     gap: 20px;

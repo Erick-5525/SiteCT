@@ -8,7 +8,17 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-media">
-        <img src="/images/ringue.jpg" alt="Atletas treinando no ringue do CT Desafio de Gigantes" />
+        {/* width/height: evita reserva de espaço errada (CLS) antes da imagem
+            carregar. fetchPriority="high": esta é a maior imagem visível da
+            Home (LCP) — sem isso, o navegador só descobre que precisa dela
+            depois de processar todo o CSS. */}
+        <img
+          src="/images/ringue.jpg"
+          alt="Atletas treinando no ringue do CT Desafio de Gigantes"
+          width={680}
+          height={481}
+          fetchPriority="high"
+        />
         <div className="hero-overlay" />
       </div>
       <div className="hero-slash" aria-hidden="true" />

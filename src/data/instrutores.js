@@ -1,55 +1,69 @@
 // Dados da equipe de instrutores exibidos em /instrutores.
-// Fotos ainda não foram definidas: cada instrutor usa um card com as
-// iniciais do nome como placeholder (ver componente InstrutorCard).
-// Basta trocar `foto: null` por uma URL de imagem quando as fotos reais
-// estiverem disponíveis.
+// Nomes e modalidades são reais (repassados pelo CT). `texto` abaixo é
+// uma FICHA FICTÍCIA — pedida a propósito pra a página não ficar com um
+// vazio embaixo do nome enquanto o CT não manda a bio de verdade. Por
+// isso o texto é só genérico (paixão pela modalidade, jeito de ensinar)
+// e evita citar anos de experiência, campeonatos ou graduação/faixa
+// específicos — dado que a gente não tem e não deveria inventar pra uma
+// pessoa real. Troque pelo texto real assim que o CT enviar.
+// Fotos também pendentes: cada instrutor usa um card com as iniciais do
+// nome como placeholder. Basta trocar `foto: null` por uma URL de
+// imagem quando as fotos reais estiverem disponíveis.
 export const instrutores = [
   {
-    nome: 'Rafael Duarte',
-    cargo: 'Head Coach · Faixa-preta de Muay Thai',
-    modalidade: 'Muay Thai · MMA',
-    foto: null,
-    texto:
-      'Mais de 15 anos de tatame e passagens por campeonatos estaduais de Muay Thai. Rafael comanda a grade técnica do CT e lidera a preparação dos alunos que competem.',
-  },
-  {
-    nome: 'Camila Rocha',
-    cargo: 'Instrutora de Boxe',
+    nome: 'Vinicius',
+    cargo: 'Professor',
     modalidade: 'Boxe',
     foto: null,
     texto:
-      'Ex-atleta de boxe olímpico, Camila une técnica apurada e didática paciente para formar desde o primeiro soco até combinações avançadas de ringue.',
+      'Apaixonado por boxe, Vinicius une técnica apurada e didática paciente para formar alunos desde o primeiro soco até combinações mais avançadas de ringue.',
   },
   {
-    nome: 'Diego Almeida',
-    cargo: 'Faixa-preta 3º Dan de Judô',
-    modalidade: 'Judô',
+    nome: 'José',
+    cargo: 'Professor',
+    modalidade: 'Boxe',
     foto: null,
     texto:
-      'Formado na tradição do judô japonês, Diego já formou dezenas de faixas-pretas e conduz turmas infantis e adultas com foco em disciplina e respeito.',
+      'José ensina boxe com foco em fundamentos sólidos — postura, deslocamento e potência —, acompanhando de perto a evolução de cada aluno.',
   },
   {
-    nome: 'Bruna Ferreira',
-    cargo: 'Preparadora Física',
-    modalidade: 'Treino Funcional',
+    nome: 'Mia',
+    cargo: 'Professora',
+    modalidade: 'Muay Thai · Preparação Física',
     foto: null,
     texto:
-      'Especialista em condicionamento de atletas de combate, Bruna desenha os circuitos funcionais que sustentam a evolução física de todas as modalidades do CT.',
+      'Mia combina a intensidade do Muay Thai com um olhar técnico de preparação física, ajudando cada aluno a evoluir tanto na técnica quanto no condicionamento.',
   },
   {
-    nome: 'Thiago Nogueira',
-    cargo: 'Instrutor de MMA',
-    modalidade: 'MMA · Muay Thai',
+    nome: 'Jack',
+    cargo: 'Professor',
+    modalidade: 'Muay Thai · Boxe',
     foto: null,
     texto:
-      'Com passagens por competições regionais de MMA, Thiago traduz a experiência de octógono em treinos técnicos de striking e grappling para todos os níveis.',
+      'Transitando entre o Muay Thai e o boxe, Jack forma alunos versáteis, com repertório completo tanto na defesa quanto no ataque em pé.',
   },
   {
-    nome: 'Larissa Prado',
-    cargo: 'Instrutora de Boxe e Funcional',
-    modalidade: 'Boxe · Treino Funcional',
+    nome: 'Ryan',
+    cargo: 'Professor',
+    modalidade: 'Muay Thai',
     foto: null,
     texto:
-      'Larissa combina boxe técnico e treino funcional em aulas de alta energia, sendo referência entre os alunos que buscam performance e emagrecimento.',
+      'Ryan traz energia e disciplina para o tatame do Muay Thai, trabalhando técnica de base e condicionamento para alunos de todos os níveis.',
+  },
+  {
+    nome: 'Galante',
+    cargo: 'Professor',
+    modalidade: 'Jiu-Jitsu',
+    foto: null,
+    texto:
+      'Galante conduz as turmas de Jiu-Jitsu com foco em base sólida e evolução técnica constante, respeitando o ritmo de cada aluno dentro da metodologia Gracie Barra.',
+  },
+  {
+    nome: 'Wendel',
+    cargo: 'Professor',
+    modalidade: 'MMA · Judô',
+    foto: null,
+    texto:
+      'Wendel une a tradição do Judô à versatilidade do MMA, conduzindo alunos que buscam tanto a arte suave quanto o combate completo.',
   },
 ]

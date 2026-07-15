@@ -19,7 +19,9 @@ function ModalidadesGrid() {
         <div className="modalidade-cards">
           {modalidades.map(({ slug, name, icon: Icon, resumo }, i) => (
             <Reveal as={NavLink} to={`/modalidades#${slug}`} className="modalidade-card" delay={(i % 3) + 1} key={slug}>
-              <Icon className="modalidade-icon" />
+              <span className="modalidade-icon-wrap">
+                <Icon className="modalidade-icon" />
+              </span>
               <h3>{name}</h3>
               <p>{resumo}</p>
               <span className="modalidade-link">Saiba mais →</span>

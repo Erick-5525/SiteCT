@@ -4,6 +4,7 @@
 import Hero from '../components/Hero.jsx'
 import AboutSection from '../components/AboutSection.jsx'
 import ModalidadesGrid from '../components/ModalidadesGrid.jsx'
+import KidsTeaser from '../components/KidsTeaser.jsx'
 import DiferenciaisGrid from '../components/DiferenciaisGrid.jsx'
 import CtaBand from '../components/CtaBand.jsx'
 
@@ -13,6 +14,7 @@ function Home() {
       <Hero />
       <AboutSection />
       <ModalidadesGrid />
+      <KidsTeaser />
       <DiferenciaisGrid />
       <CtaBand
         title="Sua evolução começa no tatame."

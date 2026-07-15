@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import PageHeader from '../components/PageHeader.jsx'
 import ContactInfo from '../components/ContactInfo.jsx'
 import ContactForm from '../components/ContactForm.jsx'
@@ -6,6 +7,13 @@ import Reveal from '../components/Reveal.jsx'
 import './Atendimentos.css'
 
 function Atendimentos() {
+  // Quando se chega aqui pelo botão "Agende sua Aula Experimental" de
+  // uma modalidade específica, o nome dela vem em location.state (ver
+  // ModalidadeDetailCard.jsx) — repassado pro formulário pré-selecionar
+  // o <select> em vez da pessoa ter que escolher de novo.
+  const location = useLocation()
+  const modalidadeSelecionada = location.state?.modalidade
+
   return (
     <div className="page">
       <PageHeader eyebrow="Atendimento" title="Vamos treinar juntos">
@@ -19,7 +27,7 @@ function Atendimentos() {
             <ContactInfo />
           </Reveal>
           <Reveal delay={2}>
-            <ContactForm />
+            <ContactForm initialModalidade={modalidadeSelecionada} />
           </Reveal>
         </div>
       </section>

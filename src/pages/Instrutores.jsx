@@ -6,7 +6,7 @@ function Instrutores() {
   return (
     <div className="page">
       <PageHeader eyebrow="Nossa Equipe" title="Instrutores">
-        Seis profissionais dedicados a transformar técnica em resultado, um aluno de cada vez.
+        Sete profissionais dedicados a transformar técnica em resultado, um aluno de cada vez.
         Conheça quem vai te acompanhar de perto na sua evolução.
       </PageHeader>
 

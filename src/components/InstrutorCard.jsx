@@ -31,7 +31,7 @@ function InstrutorCard({ instrutor, index }) {
           <span className="eyebrow">{`0${index + 1}`}</span>
           <h2>{nome}</h2>
           <span className="instrutor-cargo">{cargo}</span>
-          <p>{texto}</p>
+          {texto && <p>{texto}</p>}
           <span className="instrutor-modalidade">{modalidade}</span>
         </Reveal>
       </div>
